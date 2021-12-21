@@ -1,31 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Frontend Mentor | Launch countdown timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (min-width: 320px)"
+      href="styles/mobile.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (min-width: 1024px)"
+      href="styles/desktop.css"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Launch countdown timer</title>
+    <style href="styles/desktop.css" href="styles/mobile.css"></style>
+  </head>
+  <body>
+    <h1 class="header">WE'RE LAUNCHING SOON</h1>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <div class="main-container">
+      <div class="box">
+        <span class="days">14</span>
+        <h2>DAYS</h2>
+      </div>
 
-  We're launching soon
+      <div class="box">
+        <span class="hours">00</span>
+        <h2>HOURS</h2>
+      </div>
 
-  Days
-  Hours
-  Minutes
-  Seconds
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+      <div class="box">
+        <span class="minutes">00</span>
+        <h2>MINUTES</h2>
+      </div>
+
+      <div class="box">
+        <span class="sec">00</span>
+        <h2>SECONDS</h2>
+      </div>
+    </div>
+
+    <div class="socmed">
+      <img
+        class="fcbook"
+        alt="Facebook"
+        src="https://raw.githubusercontent.com/haneulffer98/countdown-timer/a431baa22facfc70b4f0922680d35ff32ccfdb95/images/icon-facebook.svg"
+      />
+      <img
+        class="pins"
+        alt="Pinterest"
+        src="https://raw.githubusercontent.com/haneulffer98/countdown-timer/a431baa22facfc70b4f0922680d35ff32ccfdb95/images/icon-pinterest.svg"
+      />
+
+      <img
+        class="inst"
+        alt="Instagram"
+        src="https://raw.githubusercontent.com/haneulffer98/countdown-timer/a431baa22facfc70b4f0922680d35ff32ccfdb95/images/icon-instagram.svg"
+      />
+    </div>
+    <img
+      class="hills-pic"
+      src="https://raw.githubusercontent.com/haneulffer98/countdown-timer/a431baa22facfc70b4f0922680d35ff32ccfdb95/images/pattern-hills.svg"
+    />
+    <footer class="attribution">
+      <h5>
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="https://github.com/haneulffer98">haneulffer98</a>.
+      </h5>
+    </footer>
+  </body>
+
+  <script href="app.js">
+    const countdown = () => {
+      const countDate = new Date("January 2, 2022 00:10:30").getTime();
+      const now = new Date().getTime();
+      const gap = countDate - now;
+
+      const second = 1000;
+      const minute = second * 60;
+      const hour = minute * 60;
+      const day = hour * 24;
+
+      const textDay = Math.floor(gap / day);
+      const textHour = Math.floor((gap % day) / hour);
+      const textMinute = Math.floor((gap % hour) / minute);
+      const textSecond = Math.floor((gap % minute) / second);
+
+      document.querySelector(".days").innerText = textDay;
+      document.querySelector(".hours").innerText = textHour;
+      document.querySelector(".minutes").innerText = textMinute;
+      document.querySelector(".sec").innerText = textSecond;
+
+      if (gap < 10000) {
+        launch();
+      }
+    };
+
+    setInterval(countdown, 1000);
+  </script>
 </html>
